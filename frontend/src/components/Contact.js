@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import './Contact.css';
 import { AuthContext } from '../context/AuthContext'; // import auth context
-
+const BACKEND_URL=process.env.BACKEND_URL
 export default function Contact() {
   const { user } = useContext(AuthContext); // current logged-in user
   const [formData, setFormData] = useState({
@@ -35,7 +35,7 @@ export default function Contact() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/feedback", {
+      const response = await fetch(`${BACKEND_URL}/api/feedback`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
