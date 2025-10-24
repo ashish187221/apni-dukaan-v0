@@ -8,6 +8,7 @@ export default function Home() {
   return (
     <>
     <Welcome/>
+    <div style={{paddingTop:'50px'}}></div>
     <Shoes />
     <Clothing />
     <Footer />

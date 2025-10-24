@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Welcome() {
-  // Add glowing gradient and animation keyframes
   useEffect(() => {
     const style = document.createElement("style");
     style.innerHTML = `
@@ -36,79 +35,56 @@ export default function Welcome() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#fff", // dark bg for glowing lines
+        backgroundImage: "url('Images/banner1.png')", 
+        backgroundSize: "cover", 
+        backgroundPosition: "center",
         fontFamily: "Poppins, sans-serif",
+        borderRadius : '20px'
       }}
     >
-      {/* === Animated Glowing SVG Background === */}
-      <motion.svg
-        viewBox="0 0 1440 900"
-        preserveAspectRatio="xMidYMid meet"
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-        }}
-        animate={{ rotate: [0, 1, 0, -1, 0] }}
-        transition={{ duration: 60, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <defs>
-          <linearGradient id="glowGradient" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#00FFFF" />
-            <stop offset="100%" stopColor="#0070F3" />
-          </linearGradient>
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
 
-        {paths.map((path, i) => (
-          <motion.path
-            key={i}
-            d={path}
-            variants={pathVariants}
-            initial="initial"
-            animate="animate"
-            transition={{
-              duration: 6 + i,
-              delay: i * 0.3,
-              repeat: Infinity,
-              repeatType: "mirror",
-              ease: "easeInOut",
-            }}
-            stroke="url(#glowGradient)"
-            strokeWidth="2"
-            fill="none"
-            strokeLinecap="round"
-            filter="url(#glow)"
-            opacity="0.7"
-          />
-        ))}
-      </motion.svg>
 
-      {/* === Gradient Text === */}
-      <p
-        style={{
-          position: "relative",
-          zIndex: 10,
-          background: "linear-gradient(to bottom right, #ff0745, #000cff)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          fontWeight: "900",
-          fontSize: "70px",
-          textAlign: "center",
-          margin: 0,
-          transform: "translateY(-30px)",
-          letterSpacing: "2px",
-        }}
-      >
-        Welcome to Apni Dukaan!
-      </p>
+      <AnimatedTitle/>
     </div>
+  );
+}
+
+
+function AnimatedTitle() {
+  const text = "Welcome to Apni Dukaan...";
+  const [displayedText, setDisplayedText] = useState("");
+
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      setDisplayedText(text.slice(0, index + 1));
+      index++;
+      if (index === text.length) clearInterval(interval);
+    }, 150); 
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <p
+    style={{
+      position: "relative",
+      zIndex: 10,
+      WebkitBackgroundClip: "text",
+      fontWeight: "600",
+      fontSize: "70px",
+      fontFamily: "cursive",
+      textAlign: "center",
+      margin: 0,
+      transform: "translateY(-30px)",
+      letterSpacing: "0px",
+      whiteSpace: "pre",
+      color : '#fff'
+    }}
+    
+
+    
+    >
+      {displayedText}
+    </p>
   );
 }
