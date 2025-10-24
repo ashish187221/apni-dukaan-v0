@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Register.css";
-const BACKEND_URL=process.env.BACKEND_URL
-
+const BACKEND_URL=process.env.REACT_APP_BACKEND_URL
+console.log(BACKEND_URL);
 export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
