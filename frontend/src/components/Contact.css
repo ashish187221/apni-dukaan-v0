@@ -1,0 +1,147 @@
+/* .contact {
+    margin-top: 100px;
+    margin-left: 300px;
+    display: flex;
+    justify-content: center;   
+    align-items: center
+}
+
+.form {
+    width: 45%;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: inline-block;
+    font-size: 20px;
+    margin-left: 5%;
+    margin-top: 30px;
+}
+
+input {
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-top: 10px;
+    border : 1px solid gray
+}
+
+#btn {
+    padding: 8px 24px;
+    border-radius: 100px;
+    margin-top: 10px;
+    font-size: 16px;
+    position: relative;
+    left: 35%;
+}
+
+#btn a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#btn:hover {
+    cursor: pointer;
+}
+
+.form-2 p {
+    font-size: 24px;
+    font-weight: 700;
+}
+   */
+
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+  padding: 20px;
+}
+
+.contact-card {
+  background: #fff;
+  width: 100%;
+  max-width: 480px;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.contact-card h2 {
+  font-size: 26px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.contact-card p {
+  color: #666;
+  margin-bottom: 25px;
+  font-size: 15px;
+}
+
+label {
+  display: block;
+  text-align: left;
+  font-weight: 600;
+  color: #444;
+  margin-top: 15px;
+}
+
+label span {
+  color: red;
+}
+
+input,
+textarea {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #007bff;
+}
+
+textarea {
+  height: 100px;
+  resize: none;
+}
+
+#submit-btn {
+  margin-top: 20px;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 50px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#submit-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+ /*Responsive Design*/
+@media (max-width: 600px) {
+  .contact-card {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .contact-card h2 {
+    font-size: 22px;
+  }
+}

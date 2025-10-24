@@ -1,0 +1,69 @@
+/* Center the register page horizontally */
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* full screen height */
+}
+
+/* Style the register form */
+.register {
+  padding: 0px 30px;
+  border-radius: 4px;
+  background-color: #fff;
+  text-align: center;
+}
+
+/* Style labels */
+.register label {
+  font-weight: bold;
+  display: block;
+  margin: 10px 0 5px;
+}
+
+/* Style input fields */
+.register input[type="text"],
+.register input[type="email"],
+.register input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+/* Style register button */
+#reg-btn {
+  background-color: #28a745; /* green color for register */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#reg-btn:disabled {
+  background-color: #6c757d; /* grey if disabled */
+  cursor: not-allowed;
+}
+
+#reg-btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+/* Footer links */
+.footer-links {
+  margin-top: 20px;
+}
+
+.footer-links span {
+  font-size: 14px;
+}
+
+.footer-links a {
+  color: #28a745;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
