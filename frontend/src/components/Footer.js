@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import './Footer.css'
 
 export default function Footer() {
-  return (
+    const year=new Date().getFullYear();
+    return (
     <>  
         <div className="footer">
             <div className="footer-logo">
@@ -36,7 +37,7 @@ export default function Footer() {
         </div>
 
         <div className="copyright">
-            <p>Copyright &copy; 2024, All Rights Reserved.</p>
+            <p>Copyright &copy; {year}, All Rights Reserved.</p>
         </div>
     </>
   );

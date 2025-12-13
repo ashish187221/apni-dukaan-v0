@@ -1,90 +1,116 @@
+import React from "react";
 import { motion } from "framer-motion";
-import React, { useState, useEffect } from "react";
 
 export default function Welcome() {
-  useEffect(() => {
-    const style = document.createElement("style");
-    style.innerHTML = `
-      @keyframes gradientWave {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
-    `;
-    document.head.appendChild(style);
-  }, []);
-
-  const paths = [
-    "M0,100 Q360,200 720,100 T1440,100",
-    "M0,150 Q360,250 720,150 T1440,150",
-    "M0,200 Q360,300 720,200 T1440,200",
-  ];
-
-  const pathVariants = {
-    initial: { pathLength: 0, opacity: 0.2 },
-    animate: { pathLength: 1, opacity: 1 },
-  };
-
   return (
     <div
       style={{
-        position: "relative",
         height: "100vh",
         width: "100%",
+        position: "relative",
         overflow: "hidden",
+        background: "linear-gradient(180deg, #ffffff, #eef3ff)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundImage: "url('Images/banner1.png')", 
-        backgroundSize: "cover", 
-        backgroundPosition: "center",
-        fontFamily: "Poppins, sans-serif",
-        borderRadius : '20px'
       }}
     >
+      {/* Blob 1 */}
+      <motion.div
+        animate={{ x: [0, 260, -220, 0], y: [0, -200, 150, 0] }}
+        whileHover={{ scale: 1.1 }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          position: "absolute",
+          width: "520px",
+          height: "520px",
+          borderRadius: "50%",
+          background: "linear-gradient(135deg, #ff6a88, #ffb199)",
+          filter: "blur(120px)",
+          opacity: 0.85,
+        }}
+      />
 
+      {/* Blob 2 */}
+      <motion.div
+        animate={{ x: [0, -300, 260, 0], y: [0, 260, -200, 0] }}
+        whileHover={{ scale: 1.1 }}
+        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          position: "absolute",
+          width: "480px",
+          height: "480px",
+          borderRadius: "50%",
+          background: "linear-gradient(135deg, #859cffff, #a6c1ff)",
+          filter: "blur(120px)",
+          opacity: 0.85,
+        }}
+      />
 
-      <AnimatedTitle/>
+      {/* Blob 3 */}
+      <motion.div
+        animate={{ x: [0, 180, -160, 0], y: [0, -120, 100, 0] }}
+        whileHover={{ scale: 1.08 }}
+        transition={{ duration: 28, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          position: "absolute",
+          width: "420px",
+          height: "420px",
+          borderRadius: "50%",
+          background: "linear-gradient(135deg, #a8ff78, #78ffd6)",
+          filter: "blur(120px)",
+          opacity: 0.75,
+        }}
+      />
+
+      {/* Center Card */}
+      <motion.div
+        initial={{ scale: 0.85, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        whileHover={{
+          scale: 1.05,
+          rotateX: 6,
+          rotateY: -6,
+          boxShadow: "0 60px 140px rgba(0,0,0,0.25)",
+        }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        style={{
+          zIndex: 10,
+          padding: "90px 130px",
+          borderRadius: "30px",
+          background: "rgba(255,255,255,0.75)",
+          backdropFilter: "blur(16px)",
+          boxShadow: "0 40px 100px rgba(0,0,0,0.15)",
+          textAlign: "center",
+          transformStyle: "preserve-3d",
+          cursor: "pointer",
+        }}
+      >
+        <h1
+          style={{
+            fontSize: "70px",
+            fontWeight: "900",
+            marginBottom: "20px",
+            background:
+              "linear-gradient(90deg, #ff512f, #dd2476, #1fa2ff)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          Apni Dukaan
+        </h1>
+
+        <p
+          style={{
+            fontSize: "24px",
+            fontWeight: "500",
+            color: "#222",
+            opacity: 0.9,
+          }}
+        >
+          A modern shopping experience
+        </p>
+      </motion.div>
     </div>
-  );
-}
-
-
-function AnimatedTitle() {
-  const text = "Welcome to Apni Dukaan...";
-  const [displayedText, setDisplayedText] = useState("");
-
-  useEffect(() => {
-    let index = 0;
-    const interval = setInterval(() => {
-      setDisplayedText(text.slice(0, index + 1));
-      index++;
-      if (index === text.length) clearInterval(interval);
-    }, 150); 
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <p
-    style={{
-      position: "relative",
-      zIndex: 10,
-      WebkitBackgroundClip: "text",
-      fontWeight: "600",
-      fontSize: "70px",
-      fontFamily: "cursive",
-      textAlign: "center",
-      margin: 0,
-      transform: "translateY(-30px)",
-      letterSpacing: "0px",
-      whiteSpace: "pre",
-      color : '#fff'
-    }}
-    
-
-    
-    >
-      {displayedText}
-    </p>
   );
 }

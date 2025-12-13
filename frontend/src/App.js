@@ -102,7 +102,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <div style={{background:'#fff', overflowX : 'hidden'}}>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -170,7 +170,7 @@ const App = () => {
           }
         />
       </Routes>
-    </>
+    </div>
   );
 };
 
