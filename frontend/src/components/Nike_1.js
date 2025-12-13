@@ -32,7 +32,7 @@ export default function Nike_1({ addToCart })
       price: 3999,
       quantity: count,
       size: selectedSize,
-      image: "/images/nike-1.webp",
+      image: "/images/Nike-1.webp",
       description:
         "Nike Air Zoom Racer — Built for speed and comfort with responsive Zoom Air cushioning and a lightweight mesh upper that keeps your feet cool during intense workouts.",
     });
@@ -44,7 +44,7 @@ export default function Nike_1({ addToCart })
     return (
         <div className="product-container">
       <div className="product-image">
-        <img src="/images/nike-1.webp" alt="Nike Shoe" />
+        <img src="/images/Nike-1.webp" alt="Nike Shoe" />
       </div>
 
       <div className="product-details">

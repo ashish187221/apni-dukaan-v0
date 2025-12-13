@@ -33,7 +33,7 @@ export default function Nike_4({ addToCart }) {
               price: 2599,
               quantity: count,
               size: selectedSize,
-              image: "/images/nike-4.webp",
+              image: "/images/Nike-4.webp",
               description:
                 "Nike Run Swift 3 — A perfect balance of performance and style featuring a shock-absorbing midsole, reinforced heel support, and long-lasting comfort for everyday training.",
             });
@@ -45,7 +45,7 @@ export default function Nike_4({ addToCart }) {
     return (
         <div className="product-container">
         <div className="product-image">
-        <img src="/images/nike-4.webp" alt="Nike Shoe" />
+        <img src="/images/Nike-4.webp" alt="Nike Shoe" />
         </div>
 
         <div className="product-details">
