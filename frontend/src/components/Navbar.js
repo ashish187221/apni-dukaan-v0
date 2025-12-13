@@ -10,12 +10,12 @@ const Navbar = () => {
   return (
     <nav className="navbar">
 
-      <img src="Images/1_Logo.png" className='logo'></img>
+      <img src="images/1_Logo.png" className='logo'></img>
 
       {/* Left side - cart + auth buttons on mobile */}
       <div className="nav-left-mobile">
         <Link to="/cart">
-          <img className="addToCart" src="Images/AddToCart.jpg" alt="AddToCart" />
+          <img className="addToCart" src="images/AddToCart.jpg" alt="AddToCart" />
         </Link>
         {user ? (
           <button className="logout-btn" onClick={logout}>Logout</button>
@@ -40,7 +40,7 @@ const Navbar = () => {
       {/* Desktop right side - normal view */}
       <div className="nav-right-desktop">
         <Link to="/cart">
-          <img className="addToCart" src="Images/AddToCart.jpg" alt="AddToCart" />
+          <img className="addToCart" src="images/AddToCart.jpg" alt="AddToCart" />
         </Link>
         {user ? (
           <div className="auth-buttons">
