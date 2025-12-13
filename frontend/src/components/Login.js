@@ -3,7 +3,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import './Login.css';
 const BACKEND_URL=process.env.REACT_APP_BACKEND_URL
-console.log(BACKEND_URL);
 
 export default function Login() {
   const [email, setEmail] = useState("");
