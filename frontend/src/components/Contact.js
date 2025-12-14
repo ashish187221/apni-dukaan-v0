@@ -1,9 +1,12 @@
 import React, { useState, useContext } from 'react';
 import './Contact.css';
-import { AuthContext } from '../context/AuthContext'; // import auth context
-const BACKEND_URL=process.env.BACKEND_URL
+import { AuthContext } from '../context/AuthContext';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 export default function Contact() {
-  const { user } = useContext(AuthContext); // current logged-in user
+  const { user } = useContext(AuthContext);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,7 +21,6 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
     if (!user || !user.email) {
       alert("Please login first to send feedback!");
       return;
@@ -30,7 +32,7 @@ export default function Contact() {
     }
 
     if (!formData.name || !formData.number || !formData.message) {
-      alert("Please fill out all required fields!");
+      alert("Please fill all required fields!");
       return;
     }
 
@@ -38,28 +40,33 @@ export default function Contact() {
       const response = await fetch(`${BACKEND_URL}/api/feedback`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${user.token}` // optional if backend verifies JWT
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          message: `${formData.message}\nPhone: ${formData.number}`,
-        }),
+          phone: formData.number,
+          message: formData.message
+        })
       });
 
       const data = await response.json();
 
       if (response.ok) {
         alert("Thank you for your valuable feedback!");
-        setFormData({ name: "", email: "", number: "", message: "" });
-        console.log("Server Response:", data);
+        setFormData({
+          name: "",
+          email: "",
+          number: "",
+          message: ""
+        });
+        console.log("Feedback saved:", data);
       } else {
-        alert("Something went wrong! Please try again later.");
-        console.error("Server Error:", data);
+        alert(data.message || "Failed to submit feedback");
       }
+
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Feedback Error:", error);
       alert("Unable to send feedback. Please check your server connection!");
     }
   };
@@ -68,49 +75,45 @@ export default function Contact() {
     <div className="contact-container">
       <div className="contact-card">
         <h2>📝 Share Your Feedback</h2>
-        <p>We’d love to hear your thoughts about your shopping experience!</p>
+        <p>We’d love to hear your thoughts!</p>
 
         <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Name <span>*</span></label>
+          <label>Name *</label>
           <input
             type="text"
             id="name"
-            placeholder="Enter your name"
             value={formData.name}
             onChange={handleChange}
             required
           />
 
-          <label htmlFor="email">Email (must match your account email) <span>*</span></label>
+          <label>Email (must match login email) *</label>
           <input
             type="email"
             id="email"
-            placeholder="Enter your registered email"
             value={formData.email}
             onChange={handleChange}
             required
           />
 
-          <label htmlFor="number">Phone Number <span>*</span></label>
+          <label>Phone Number *</label>
           <input
             type="number"
             id="number"
-            placeholder="Enter your phone number"
             value={formData.number}
             onChange={handleChange}
             required
           />
 
-          <label htmlFor="message">Your Feedback <span>*</span></label>
+          <label>Your Feedback *</label>
           <textarea
             id="message"
-            placeholder="Write your message here..."
             value={formData.message}
             onChange={handleChange}
             required
           />
 
-          <button type="submit" id="submit-btn">Submit Feedback</button>
+          <button type="submit">Submit Feedback</button>
         </form>
       </div>
     </div>
