@@ -68,16 +68,16 @@ export default function Contact() {
 
         <form onSubmit={handleSubmit}>
           <label>Name *</label>
-          <input id="name" value={formData.name} onChange={handleChange} required />
+          <input  placeholder="enter your name" id="name" value={formData.name} onChange={handleChange} required />
 
           <label>Email *</label>
-          <input id="email" type="email" value={formData.email} onChange={handleChange} required />
+          <input placeholder="email" id="email" type="email" value={formData.email} onChange={handleChange} required />
 
           <label>Phone *</label>
-          <input id="number" value={formData.number} onChange={handleChange} required />
+          <input placeholder="number" id="number" value={formData.number} onChange={handleChange} required />
 
           <label>Feedback *</label>
-          <textarea id="message" value={formData.message} onChange={handleChange} required />
+          <textarea placeholder="feedback" id="message" value={formData.message} onChange={handleChange} required />
 
           <button id="submit-btn" type="submit">Submit Feedback</button>
         </form>

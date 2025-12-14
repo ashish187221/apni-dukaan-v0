@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
   res.send("Backend is running!");
 });
 
-// 🔥 SIMPLE MongoDB CONNECTION
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
