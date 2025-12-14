@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
-import './Contact.css';
-import { AuthContext } from '../context/AuthContext';
+import React, { useState, useContext } from "react";
+import "./Contact.css";
+import { AuthContext } from "../context/AuthContext";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-console.log("BACKEND_URL from Contact.js:", BACKEND_URL);
+
 export default function Contact() {
   const { user } = useContext(AuthContext);
 
@@ -27,12 +27,7 @@ export default function Contact() {
     }
 
     if (formData.email.trim().toLowerCase() !== user.email.trim().toLowerCase()) {
-      alert("Feedback email must match your logged-in account email!");
-      return;
-    }
-
-    if (!formData.name || !formData.number || !formData.message) {
-      alert("Please fill all required fields!");
+      alert("Feedback email must match your logged-in email!");
       return;
     }
 
@@ -41,6 +36,7 @@ export default function Contact() {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
+          // ❌ Authorization removed
         },
         body: JSON.stringify({
           name: formData.name,
@@ -53,21 +49,15 @@ export default function Contact() {
       const data = await response.json();
 
       if (response.ok) {
-        alert("Thank you for your valuable feedback!");
-        setFormData({
-          name: "",
-          email: "",
-          number: "",
-          message: ""
-        });
-        console.log("Feedback saved:", data);
+        alert("✅ Thank you for your feedback!");
+        setFormData({ name: "", email: "", number: "", message: "" });
       } else {
-        alert(data.message || "Failed to submit feedback");
+        console.error(data);
+        alert("❌ Failed to send feedback");
       }
-
-    } catch (error) {
-      console.error("Feedback Error:", error);
-      alert("Unable to send feedback. Please check your server connection!");
+    } catch (err) {
+      console.error(err);
+      alert("❌ Server not reachable");
     }
   };
 
@@ -75,43 +65,19 @@ export default function Contact() {
     <div className="contact-container">
       <div className="contact-card">
         <h2>📝 Share Your Feedback</h2>
-        <p>We’d love to hear your thoughts!</p>
 
         <form onSubmit={handleSubmit}>
           <label>Name *</label>
-          <input
-            type="text"
-            id="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
+          <input id="name" value={formData.name} onChange={handleChange} required />
 
-          <label>Email (must match login email) *</label>
-          <input
-            type="email"
-            id="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
+          <label>Email *</label>
+          <input id="email" type="email" value={formData.email} onChange={handleChange} required />
 
-          <label>Phone Number *</label>
-          <input
-            type="number"
-            id="number"
-            value={formData.number}
-            onChange={handleChange}
-            required
-          />
+          <label>Phone *</label>
+          <input id="number" value={formData.number} onChange={handleChange} required />
 
-          <label>Your Feedback *</label>
-          <textarea
-            id="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          />
+          <label>Feedback *</label>
+          <textarea id="message" value={formData.message} onChange={handleChange} required />
 
           <button type="submit">Submit Feedback</button>
         </form>
