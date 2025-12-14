@@ -79,7 +79,7 @@ export default function Contact() {
           <label>Feedback *</label>
           <textarea id="message" value={formData.message} onChange={handleChange} required />
 
-          <button type="submit">Submit Feedback</button>
+          <button id="submit-btn" type="submit">Submit Feedback</button>
         </form>
       </div>
     </div>
