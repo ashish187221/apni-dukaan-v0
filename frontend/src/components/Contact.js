@@ -3,7 +3,7 @@ import './Contact.css';
 import { AuthContext } from '../context/AuthContext';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-
+console.log("BACKEND_URL from Contact.js:", BACKEND_URL);
 export default function Contact() {
   const { user } = useContext(AuthContext);
 
