@@ -3,6 +3,7 @@ import "./Contact.css";
 import { AuthContext } from "../context/AuthContext";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+console.log("BACKEND_URL from React:", BACKEND_URL);
 
 export default function Contact() {
   const { user } = useContext(AuthContext);
@@ -36,7 +37,6 @@ export default function Contact() {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
-          // ❌ Authorization removed
         },
         body: JSON.stringify({
           name: formData.name,
